@@ -1,10 +1,28 @@
 var express = require('express');
-var log     = require("../logging.js")("api/quittung");
+var log     = require("../logging.js")("api/", 6);
 
 // globally available variables
 var Level;
 
 function getLevel(req, res) {
+  log(JSON.stringify(req.body));
+  Level.findOne({
+    where: req.params
+  })
+  .then((data) => {
+    res.send(data);
+  });
+}
+
+function getAllLevels(req, res) {
+  Level.findAll()
+  .then((d)=>{log(d);return d;})
+  .then((data) => {
+    res.send(data);
+  });
+}
+
+function getCurrent(req, res) {
   res.redirect("back");
 }
 
@@ -33,8 +51,10 @@ module.exports = function(db) {
   var router = express.Router();
   Level = db.sequelize.models.Level;
 
-  router.get("/", getLevel)
-  router.post("/", postImage);
+  router.get("/all", getAllLevels)
+  router.get("/current", getCurrent);
+  router.post("/current", postImage);
+  router.get("/:id", getLevel)
 
   return router;
 }
