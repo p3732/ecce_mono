@@ -12,7 +12,18 @@
                overlay: img/overlay/mona_lisa_face.png
                x:215, y:77, width: 370, height: 484
                timeout: 30
-               hex_value_1: "FFFFFF", hex_value_2: "5e2a15"}
-    }
+               hex_value_1: FFFFFF
+               hex_value_2: 5e2a15
+    }},
+
+    { where: { title: madame_roulin_and_her_baby
+               image: img/painting/madame_roulin_and_her_baby.jpg
+               overlay: img/overlay/madame_roulin_and_her_baby.png
+               x:61, y:1204, width: 2558, height: 2517
+               timeout: 30
+               hex_value_1: D7956E
+               hex_value_2: E8E1CE
+               hex_value_3: 447D0F
+    }}
   ]
 }
