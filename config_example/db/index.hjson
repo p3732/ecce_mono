@@ -1,0 +1,6 @@
+{
+  // The path of the database file.
+  uri: sqlite:db.sqlite
+  // Whether sequelize should display logging output.
+  logging: false
+}

@@ -1,0 +1,4 @@
+{
+  // The post you want to bind the server to.
+  port: 3300
+}

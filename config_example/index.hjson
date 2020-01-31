@@ -1,0 +1,4 @@
+{
+  // availaible options for mode: production, development
+  mode: development
+}
