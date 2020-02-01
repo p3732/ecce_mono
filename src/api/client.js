@@ -32,14 +32,17 @@ function postImage(req, res) {
 }
 
 function getLevel(req, res) {
-  log("request for level " + req.params.id);
-
-  Level.findOne({
-    where: req.params
-  })
-  .then((data) => {
-    res.send(data);
-  });
+  let id = Number.parseInt(req.params.id, 10);
+  if (Number.isInteger(id)) {
+    log("request for level " + id);
+    Level.findOne({
+      where: {"id": id}
+    })
+    .then(res.send(data));
+  } else {
+    log("request for invalid level " + req.params.id);
+    res.end()
+  }
 }
 
 function getSubmissionAmount(req, res) {
@@ -47,15 +50,16 @@ function getSubmissionAmount(req, res) {
 }
 
 function voteForSubmission(req, res) {
-  let id = req.params.id;
-  // check that this id can actually be voted for
-  /*global_state == "vote" &&*/
-  if ( Number.isInteger(id) && id > 0
-      && id <= global_votes.length) {
+  let id = Number.parseInt(req.params.id, 10);
+
+  if (Number.isInteger(id)  && id >= 0 && id < global_votes.length) {
     log("voted for "+ id);
-    global_votes[id-1] += 1;
-    log(id + " now has " + global_votes[id-1] + " votes");
+    global_votes[id] += 1;
+    log(id + " now has " + global_votes[id] + " votes");
+  } else {
+    log.warn("incorrect voting attempted ")
   }
+
   res.end();
 }
 
