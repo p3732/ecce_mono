@@ -68,6 +68,8 @@ var developerMode = false;
 /** Sets up routing. */
 router.init = function(router, db, mode) {
   developerMode = (mode == "development" ? true : false);
+  router.use(bodyParser({limit: '10mb'}));
+
   try {
     log("init");
     // folders
