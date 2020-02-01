@@ -161,16 +161,30 @@ function submitImage() {
 
 	//image.src = submissionCanvas.toDataURL("image/png");
     //console.log(submissionCanvas.toDataURL("image/png"))
-    var request = new XMLHttpRequest();
-    request.open("POST", "/api/client/current", false);
+
     subm = submissionCanvas.toDataURL("image/png");
-    //request.setRequestHeader("Content-type", "image/png");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("imgData=" + subm);
 
+    var submRequest = new XMLHttpRequest();
+    submRequest.open("POST", "/api/client/current", false);
+    submRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //request.onreadystatechange = function(x) {
+    //    console.log(x);
+    //}
+    //console.log(subm)
+    //subm = subm.replace(/\+/g, '_')
+    //subm = subm.replace(/\//g, '.')
+    //subm = subm.replace(/=/g, '-')
 
-    console.log(subm);
+    submRequest.send("imgData=" + subm);
 
+    //body = document.getElementById("body");
+    //img = document.createElement("img");
+    //subm =  subm.replace(/_/g, '\+')
+    //subm =  subm.replace(/\./g, '\/')
+    //subm =  subm.replace(/-/g, '=')
+    //console.log(subm)
+    //img.setAttribute('src',subm);
+    //document.body.append(img);
 }
 
 

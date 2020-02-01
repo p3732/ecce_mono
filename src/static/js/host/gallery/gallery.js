@@ -1,3 +1,6 @@
+var imagesDiv = document.getElementById("images");
+
+
 function updateGallery() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
@@ -12,17 +15,34 @@ function updateGallery() {
 
 
 function setImages(images) {
-    //console.log(images[0][32])
-    var image = new Image();
-    console.log(images)
-    image.onload = function(){
+    images = JSON.parse(images)
 
+    clearImages()
+    console.log(images)
+
+
+    for (i=0; i<images.length; i++) {
+        imgString = images[i]
+        imgString =  imgString.replace(/_/g, '\+')
+        imgString =  imgString.replace(/\./g, '\/')
+        imgString =  imgString.replace(/-/g, '=')
+        container = document.createElement("div");
+        imagesDiv.append(container);
+        img = document.createElement("img");
+        img.setAttribute('src', imgString);
+        container.append(img)
+        break;
     }
-    document.getElementById("imageTest").src = JSON.parse(images)[0]
+
     //image.src = submissionCanvas.toDataURL("image/png");
 
 
 }
 
+function clearImages() {
+    while (images.firstChild) {
+        images.removeChild(images.firstChild);
+    }
+}
 
 updateGallery()
