@@ -10,6 +10,7 @@ module.exports = async function(db) {
   global.global_state = "init";
   global.global_stored_images = [];
   global.global_timeout = null;
+  global.global_votes = [];
 
   log("initialized global variables");
 };

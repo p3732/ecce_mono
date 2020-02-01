@@ -19,20 +19,11 @@ function postImage(req, res) {
   // TODO check input
   try{
     // save in global state
-    global_stored_images.push(req.body)
+    global_stored_images.push(req.body);
   } catch(error) {
-    log("can't handle posted image")
+    log("can't handle posted image");
   }
-  res.redirect("/html/client/draw/draw.html")
-}
-
-function getAllLevels(req, res) {
-  log("request for all levels");
-
-  Level.findAll()
-  .then((data) => {
-    res.send(data);
-  });
+  res.redirect("/html/client/draw/draw.html");
 }
 
 function getLevel(req, res) {
@@ -46,6 +37,20 @@ function getLevel(req, res) {
   });
 }
 
+
+function getSubmissionAmount(req, res) {
+  res.send(global_stored_images.length)
+}
+
+function voteForSubmission(req, res) {
+  // check that this id can actually be voted for
+  if (global_state == "vote" && Number.isInteger(id) && id > 0
+      && id <= global_votes.length) {
+    global_votes[req.params.id-1] += 1;
+  }
+  res.end();
+}
+
 module.exports = function(db) {
   var router = express.Router();
   // Level = db.sequelize.models.Level;
@@ -53,8 +58,9 @@ module.exports = function(db) {
   router.get("/", getAPIDescription);
   router.get("/current", getCurrent);
   router.post("/current", postImage);
-  router.get("/level/all", getAllLevels);
   router.get("/level/:id", getLevel);
+  router.get("/vote", getSubmissionAmount);
+  router.post("/vote/:id", voteForSubmission);
 
   return router;
 }

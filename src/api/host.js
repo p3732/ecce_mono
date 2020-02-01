@@ -10,6 +10,15 @@ function getAPIDescription(req, res) {
   });
 }
 
+function getAllLevels(req, res) {
+  log("request for all levels");
+
+  Level.findAll()
+  .then((data) => {
+    res.send(data);
+  });
+}
+
 function getCurrentLevel(req, res) {
   log("requested current level")
   res.send(global_current_level);
@@ -48,6 +57,7 @@ function startEcceMono(req, res) {
     global_current_level = level;
     res.send(global_current_level);
   });
+  // TODO wait for timeout to be done, then switch to vote state
 }
 
 module.exports = function(db) {
@@ -55,6 +65,7 @@ module.exports = function(db) {
   Level = db.sequelize.models.Level;
 
   router.get("/", getAPIDescription);
+  router.get("/all_levels", getAllLevels);
   router.get("/current", getCurrentLevel);
   router.get("/gallery", getAllSubmissions);
   router.post("/start", startRandomEcceMono);
