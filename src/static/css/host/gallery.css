@@ -9,6 +9,14 @@ body {
 
 }
 
+
+@keyframes border-pulsate {
+    0%   { border-color: #4f422e }
+    50%  { border-color: rgba(0, 255, 255, 1); }
+    100%   { border-color: #4f422e }
+}
+
+
 .focus {
     position: fixed;
     border-radius: 0;
@@ -18,12 +26,18 @@ body {
     height: 100vh;
 }
 
+.pulse {
+    animation: border-pulsate 2s infinite;
+}
+
 .entry {
     border: 1px solid black;
     float: left;
     width: 10%;
     margin: 1%;
     background-color: white;
+
+    border: 5px solid #4f422e;
 }
 
 
