@@ -152,12 +152,19 @@ function submitImage() {
 
     // transform drawing canvas to expeted overlay size
     submissionContext.drawImage(canvas, xOffset, yOffset,
-                                    canvas.width + xOffset,
-                                    canvas.height + yOffset,
-                                    0, 0,
+                                    canvas.width - 2*xOffset,
+                                    canvas.height - 2*yOffset,
+                                    0,
+                                    0,
                                     submissionCanvas.width,
                                     submissionCanvas.height);
 
+    console.log(xOffset)
+    console.log(yOffset)
+    console.log(canvas.width)
+    console.log(canvas.height)
+    console.log(submissionCanvas.width)
+    console.log(submissionCanvas.height)
 
 	//image.src = submissionCanvas.toDataURL("image/png");
     //console.log(submissionCanvas.toDataURL("image/png"))
@@ -167,24 +174,35 @@ function submitImage() {
     var submRequest = new XMLHttpRequest();
     submRequest.open("POST", "/api/client/current", false);
     submRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //submRequest.setRequestHeader('Content-Type', 'application/json');
+
+    //submRequest.send(JSON.stringify({"img": subm}));
+
     //request.onreadystatechange = function(x) {
     //    console.log(x);
     //}
     //console.log(subm)
-    //subm = subm.replace(/\+/g, '_')
-    //subm = subm.replace(/\//g, '.')
-    //subm = subm.replace(/=/g, '-')
+    subm = subm.replace(/\+/g, '_')
+    console.log(subm)
+
+    // encoding
+    // base64 encoding in url see: https://stackoverflow.com/questions/1374753
+    partA = subm.slice(0, 21)
+    partB = subm.slice(21, -1)
+    partB = partB.replace(/\//g, '.')
+    subm = partA + partB
+    subm = subm.replace(/=/g, '-')
 
     submRequest.send("imgData=" + subm);
 
-    //body = document.getElementById("body");
-    //img = document.createElement("img");
-    //subm =  subm.replace(/_/g, '\+')
-    //subm =  subm.replace(/\./g, '\/')
-    //subm =  subm.replace(/-/g, '=')
-    //console.log(subm)
-    //img.setAttribute('src',subm);
-    //document.body.append(img);
+    body = document.getElementById("body");
+    img = document.createElement("img");
+    subm =  subm.replace(/_/g, '\+')
+    subm =  subm.replace(/\./g, '\/')
+    subm =  subm.replace(/-/g, '=')
+    console.log(subm)
+    img.setAttribute('src',subm);
+    document.body.append(img);
 }
 
 

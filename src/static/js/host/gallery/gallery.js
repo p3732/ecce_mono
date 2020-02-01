@@ -18,20 +18,29 @@ function setImages(images) {
     images = JSON.parse(images)
 
     clearImages()
-    console.log(images)
+    console.log(images.length)
 
 
     for (i=0; i<images.length; i++) {
         imgString = images[i]
+
+        // decoding
+        // base64 encoding in url see: https://stackoverflow.com/questions/1374753
         imgString =  imgString.replace(/_/g, '\+')
-        imgString =  imgString.replace(/\./g, '\/')
+        partA = imgString.slice(0, 21)
+        partB = imgString.slice(21, -1)
+        partB = partB.replace(/\./g, '\/')
+        imgString = partA + partB
+        //imgString = imgString.replace(/\//g, '.')
         imgString =  imgString.replace(/-/g, '=')
+
+
         container = document.createElement("div");
+        container.setAttribute("class", "entry");
         imagesDiv.append(container);
         img = document.createElement("img");
         img.setAttribute('src', imgString);
         container.append(img)
-        break;
     }
 
     //image.src = submissionCanvas.toDataURL("image/png");
