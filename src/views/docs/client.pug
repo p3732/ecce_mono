@@ -1,0 +1,11 @@
+extends ../header/generic_header
+
+block content
+  h1 #{title}
+
+  p The following functionality is currently supported:
+      ul
+        li GET /current to get the current level
+        li POST to /current to post an image submission for the current level
+        li GET /level/all to get all available levels
+        li GET one level by its ID from /level/:ID

@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  font: 14px "Helvetica Neue","Open Sans",sans-serif;
+}
+
+a {
+  color: #0000AA;
+}
+
+h1, h2 {
+  font-weight: 100;
+}
+
+h1 {
+  font-size: 35px;
+}
+

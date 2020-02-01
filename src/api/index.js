@@ -4,8 +4,34 @@ var log     = require("../logging.js")("api/", 6);
 // globally available variables
 var Level;
 
+function getAPIDescription(req, res) {
+  res.render("docs/client", {
+    title: "Ecce Mono API Client"
+  })
+}
+
+function getCurrent(req, res) {
+  //TODO read from global state
+  res.redirect("/");
+}
+
+function postImage(req, res) {
+  //TODO check input
+  //TODO store image to some cache
+  //TODO save in global state
+  res.redirect("/")
+}
+
+function getAllLevels(req, res) {
+  Level.findAll()
+  .then((data) => {
+    res.send(data);
+  });
+}
+
 function getLevel(req, res) {
-  log(JSON.stringify(req.body));
+  log("request for level " + req.params.id);
+
   Level.findOne({
     where: req.params
   })
@@ -14,47 +40,15 @@ function getLevel(req, res) {
   });
 }
 
-function getAllLevels(req, res) {
-  Level.findAll()
-  .then((d)=>{log(d);return d;})
-  .then((data) => {
-    res.send(data);
-  });
-}
-
-function getCurrent(req, res) {
-  res.redirect("back");
-}
-
-function postImage(req, res) {
-  let r = req.body
-
-  log(JSON.stringify(r));
-
-  // check input for correctness
-  if (!check_request(r)) {
-    log("Not fulfilling request with incorrect provided values.")
-    log(JSON.stringify(r))
-    // TODO send to error page
-    res.redirect("back");
-    return;
-  }
-
-  res.redirect("back")
-}
-
-function check_request(r) {
-  return true;
-}
-
 module.exports = function(db) {
   var router = express.Router();
   Level = db.sequelize.models.Level;
 
-  router.get("/all", getAllLevels)
+  router.get("/", getAPIDescription);
   router.get("/current", getCurrent);
   router.post("/current", postImage);
-  router.get("/:id", getLevel)
+  router.get("/level/all", getAllLevels);
+  router.get("/level/:id", getLevel);
 
   return router;
 }
