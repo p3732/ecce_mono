@@ -12,7 +12,11 @@ function getAPIDescription(req, res) {
 
 function getCurrent(req, res) {
   log("request for current level");
-  res.send(global_current_level);
+  if (global_state == "draw") {
+    res.send(global_current_level);
+  } else {
+    res.end();
+  }
 }
 
 function postImage(req, res) {
@@ -28,7 +32,8 @@ function postImage(req, res) {
   } catch(error) {
     log("can't handle posted image");
   }
-  res.redirect("/html/client/draw.html");
+  //TODO res.redirect("/html/client/vote.html");
+  res.end();
 }
 
 function getLevel(req, res) {
@@ -38,10 +43,12 @@ function getLevel(req, res) {
     Level.findOne({
       where: {"id": id}
     })
-    .then(res.send(data));
+    .then((data) => {
+      res.send(data);
+    });
   } else {
     log("request for invalid level " + req.params.id);
-    res.end()
+    res.end();
   }
 }
 
@@ -52,7 +59,7 @@ function getSubmissionAmount(req, res) {
 function voteForSubmission(req, res) {
   let id = Number.parseInt(req.params.id, 10);
 
-  if (Number.isInteger(id)  && id >= 0 && id < global_votes.length) {
+  if (Number.isInteger(id) && id >= 0 && id < global_votes.length) {
     log("voted for "+ id);
     global_votes[id] += 1;
     log(id + " now has " + global_votes[id] + " votes");

@@ -35,32 +35,33 @@ function startGame(req, res) {
   if (global_state != "init") {
     log.warn("tried to start new game, but not in init state");
     res.end();
+  } else {
+    let id = req.params.id;
+    if (!Number.isInteger(id) || id < 1 || id > global_amount_levels) {
+      // set random level id
+      id = Math.ceil(Math.random() * global_amount_levels)
+    }
+    log("starting new level (id " + id + ")");
+
+    // set global state
+    global_state = "draw";
+
+    // clear stored images
+    global_stored_images = [];
+
+    Level.findOne({
+      where: {"id": id}
+    })
+    .then((level) => {
+      // TODO only set specific fields
+      log.debug(JSON.stringify(level));
+      global_timeout = Date.now() + 1000 * level.timeout;
+      level.timeout = global_timeout;
+      global_current_level = level;
+      res.send(global_current_level);
+    });
+    // TODO wait for timeout to be done, then switch to vote state
   }
-  let id = req.params.id;
-  if (!Number.isInteger(id) || id < 1 || id > global_amount_levels) {
-    // set random level id
-    id = Math.ceil(Math.random() * global_amount_levels)
-  }
-  log("starting new level (id " + id + ")");
-
-  // set global state
-  global_state = "draw";
-
-  // clear stored images
-  global_stored_images = [];
-
-  Level.findOne({
-    where: {"id": id}
-  })
-  .then((level) => {
-    // TODO only set specific fields
-    log.debug(JSON.stringify(level));
-    global_timeout = Date.now() + 1000 * level.timeout;
-    level.timeout = global_timeout;
-    global_current_level = level;
-    res.send(global_current_level);
-  });
-  // TODO wait for timeout to be done, then switch to vote state
 }
 
 function getVotes(req, res) {
