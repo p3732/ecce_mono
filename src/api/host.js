@@ -20,15 +20,14 @@ function getAllLevels(req, res) {
 }
 
 function getCurrentLevel(req, res) {
-  log("requested current level")
+  log("requested current level");
   res.send(global_current_level);
 }
 
 function getAllSubmissions(req, res) {
-  log("requested stored images")
+  log("requested stored images");
   res.send(global_stored_images);
 }
-
 // default upon error is start random
 startRandomEcceMono = startEcceMono;
 
@@ -38,7 +37,7 @@ function startEcceMono(req, res) {
     // set random level id
     id = Math.ceil(Math.random() * global_amount_levels)
   }
-  log(id)
+  log("starting new level (id " + id + ")");
 
   // set global state
   global_state = "draw";
@@ -60,6 +59,15 @@ function startEcceMono(req, res) {
   // TODO wait for timeout to be done, then switch to vote state
 }
 
+function getVotes(req, res) {
+  if (global_state == "vote"){
+    res.send(global_votes);
+  } else {
+    warn("requested votes, but not in voting state");
+    res.end();
+  }
+}
+
 module.exports = function(db) {
   var router = express.Router();
   Level = db.sequelize.models.Level;
@@ -73,6 +81,7 @@ module.exports = function(db) {
   // TODO testing only, delete after
   router.get("/start_by_query", startRandomEcceMono);
   router.get("/start_by_query/:id", startEcceMono);
+  router.get("/votes", getVotes);
 
   return router;
 }
