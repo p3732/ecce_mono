@@ -68,7 +68,6 @@ var developerMode = false;
 /** Sets up routing. */
 router.init = function(router, db, mode) {
   developerMode = (mode == "development" ? true : false);
-  router.use(bodyParser({limit: '10mb'}));
 
   try {
     log("init");
@@ -89,7 +88,7 @@ router.init = function(router, db, mode) {
 
     // body parser
     router.use(bodyParser.json());
-    router.use(bodyParser.urlencoded({ extended: false }));
+    router.use(bodyParser.urlencoded({ extended: false, limit: '10mb' }));
 
     // route
     log("setting up /api");
@@ -98,11 +97,11 @@ router.init = function(router, db, mode) {
     router.use('/', express.static(staticFolder));
     log("setting up pages");
     routeRecursive(pagesFolder, '/', router, db);
-    log("setting up default 404 fallback")
+    log("setting up default 404 fallback");
     router.use(create404);
     log("setting up error handler");
     router.use(errorHandler);
-    log("routing set up")
+    log("routing set up");
   } catch(err) {
     log("error occured during routing: " + err);
   };
