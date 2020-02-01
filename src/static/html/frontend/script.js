@@ -10,6 +10,9 @@ var prevMouseDownCoords = null;
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext('2d');
 
+var timer = document.getElementById("timer");
+var levelTimeout = 0;
+
 brush = new Image();
 
 
@@ -24,7 +27,6 @@ function updateCurrentLevel() {
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function() {
-        console.log(this.status)
         if (this.readyState == 4 && this.status == 200) {
             setCurrentLevel(this.responseText)
         }
@@ -33,10 +35,21 @@ function updateCurrentLevel() {
     request.send();
 }
 
-function setCurrentLevel(level) {
-    level = JSON.parse(level)
-    setOverlayImage(server + level.overlay)
 
+ window.setInterval(levelTimer, 50);
+
+ function levelTimer() {
+     seconds = ((levelTimeout - Date.now()) / 1000)
+     seconds = Math.max(seconds, 0)
+     timer.innerHTML = seconds.toFixed(1)
+ }
+
+function setCurrentLevel(level) {
+    console.log("Setting level")
+    level = JSON.parse(level)
+    
+    levelTimeout = level.timeout
+    setOverlayImage(server + level.overlay)
     setBrushButtons([
         level.brush_1,
         level.brush_2,
@@ -44,6 +57,7 @@ function setCurrentLevel(level) {
         level.brush_4,
         level.brush_5
     ]);
+
 }
 
 updateCurrentLevel()

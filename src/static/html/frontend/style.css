@@ -2,6 +2,17 @@ body {
     margin: 0px;
 }
 
+
+#timer {
+    position: fixed;
+    padding: 3%;
+    z-index: 1;
+    font-family: Arial;
+    font-weight: bold;
+    color:
+    darkred;
+}
+
 #canvas {
     position: fixed;
     z-index: 1;
