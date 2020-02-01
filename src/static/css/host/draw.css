@@ -25,18 +25,37 @@ body {
     margin-left: 60px;
 }
 
+#painting {
+    position: absolute;
+
+    height: 97%;
+
+    top: 1%;
+    bottom: 2%;
+    left: 1%;
+
+    width: auto;
+}
+
 #frame {
     position: absolute;
-    left: 1%;
-    top: 3%;
-    bottom: 4%;
-    height: 93%;
+    height: 100%;
+    width: 116%;
+    
+    background: url(/img/misc/frame.png) no-repeat;
+    background-size: 100% 100%;
 }
 
 #picture {
-    position: absolute;
-    left: 4%;
-    top: 4%;
-    bottom: 6%;
-    height: 90%;
+    position: relative;
+    
+    height: 84%;
+    width: auto;
+
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 8%;
+    padding-bottom: 8%;
+
+    z-index: -1;
 }
