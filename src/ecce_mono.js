@@ -8,14 +8,17 @@ const log  = require("./logging.js")("ecmono", 6);
  *   connect and init db with sequelize
  * C-router
  *   set up routing with express and set pug to be used for rendering pages
- * D-server
+ * D-global
+ *   set up global variables
+ * E-server
  *   bind to localhost and start
  */
 async function start() {
-  var load_config = require("./config.js");
-  var db     = require("./db.js");
-  var router = require("./router.js");
-  var server = require("./server.js");
+  let load_config = require("./config.js");
+  let db          = require("./db.js");
+  let router      = require("./router.js");
+  var server      = require("./server.js");
+  var init_global = require("./global.js");
 
   log("starting");
   const config = load_config("./config");
@@ -23,6 +26,7 @@ async function start() {
   await db.init(config.db);
 
   await router.init(router, db, config.mode);
+  await init_global(db);
   try {
     server.start(config.server, router);
   } catch(err) {
