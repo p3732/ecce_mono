@@ -7,22 +7,26 @@ var Level;
 function getAPIDescription(req, res) {
   res.render("docs/client", {
     title: "Ecce Mono API Client"
-  })
+  });
 }
 
 function getCurrent(req, res) {
-  //TODO read from global state
-  res.redirect("/");
+  log("request for current level");
+  res.send(global_current_level);
 }
 
 function postImage(req, res) {
-  //TODO check input
-  //TODO store image to some cache
-  //TODO save in global state
+  // TODO check input
+  // TODO store image to some cache
+  // TODO save in global state
+  // global_stored_images.append()
+  log("not implemented yet")
   res.redirect("/")
 }
 
 function getAllLevels(req, res) {
+  log("request for all levels");
+
   Level.findAll()
   .then((data) => {
     res.send(data);
@@ -42,7 +46,7 @@ function getLevel(req, res) {
 
 module.exports = function(db) {
   var router = express.Router();
-  Level = db.sequelize.models.Level;
+  // Level = db.sequelize.models.Level;
 
   router.get("/", getAPIDescription);
   router.get("/current", getCurrent);

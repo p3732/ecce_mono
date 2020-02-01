@@ -6,5 +6,8 @@ block content
   p The following functionality is currently supported:
       ul
         li GET /host/current to get the submissions of the current level
-        li POST to /host/start to start a new level of Ecce Mono
+        li POST to /host/start to start a random new level
+        li POST to /host/start/:id to start level with specific ID
+        li GET /host/start_by_query to start a random new level and receive it
+        li GET /host/start_by_query/:ID to start a specific level and receive it
 
