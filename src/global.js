@@ -7,7 +7,7 @@ module.exports = async function(db) {
   log("there are " + global_amount_levels + " known levels");
 
   global.global_current_level = null;
-  // states are: init, ready, draw, vote
+  // states are: init, draw, vote
   global.global_state = "init";
   global.global_stored_images = [];
   global.global_timeout = null;
