@@ -26,9 +26,7 @@ function getCurrentLevel(req, res) {
 
 function getAllSubmissions(req, res) {
   log("requested stored images")
-  res.send(["data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="]);
-  //TODO
-  // res.send(global_stored_images);
+  res.send(global_stored_images);
 }
 
 // default upon error is start random
