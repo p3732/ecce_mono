@@ -1,6 +1,3 @@
-var server = "/"
-
-
 function updateGallery() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
@@ -8,7 +5,8 @@ function updateGallery() {
             setImages(this.responseText)
         }
     };
-    request.open("GET", server + "api/host/gallery", false);
+    request.open("GET", "/api/host/gallery", false);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
 
