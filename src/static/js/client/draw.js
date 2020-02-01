@@ -191,36 +191,38 @@ function submitImage() {
 
 
 
-canvas.addEventListener('mousemove', function(event) {
-  var mouseCoords = getMouseCoords(canvas, event);
-  if (prevMouseDownCoords == null) {
-      prevMouseDownCoords = mouseCoords;
-  }
+function draw(event) {
+    var mouseCoords = getMouseCoords(canvas, event);
+    if (prevMouseDownCoords == null) {
+        prevMouseDownCoords = mouseCoords;
+    }
 
+    if (mouseIsDown) {
+        var dx = mouseCoords.x - prevMouseDownCoords.x;
+        var dy = mouseCoords.y - prevMouseDownCoords.y;
 
-  if (mouseIsDown) {
-      var dx = mouseCoords.x - prevMouseDownCoords.x;
-      var dy = mouseCoords.y - prevMouseDownCoords.y;
+        var distance = Math.sqrt((dx*dx) + (dy*dy));
+        var resolution = distance / 3;
 
-      var distance = Math.sqrt((dx*dx) + (dy*dy));
-      var resolution = distance / 3;
+        var baseX = prevMouseDownCoords.x;
+        var baseY = prevMouseDownCoords.y;
 
+        for (i=0; i < 1; i+=1/resolution) {
+            context.drawImage(brush,
+                baseX + (i*dx) - brush.naturalWidth/2,
+                baseY + (i*dy) - brush.naturalHeight/2);
+        }
+    }
 
-      var baseX = prevMouseDownCoords.x;
-      var baseY = prevMouseDownCoords.y;
+    prevMouseDownCoords = mouseCoords;
+}
 
-      for (i=0; i < 1; i+=1/resolution) {
-          context.drawImage(brush,
-              baseX + (i*dx) - brush.naturalWidth/2,
-              baseY + (i*dy) - brush.naturalHeight/2);
-      }
-  }
+canvas.addEventListener('mousemove', draw);
 
-  prevMouseDownCoords = mouseCoords;
-});
 
 canvas.addEventListener('mousedown', function(event) {
   mouseIsDown = true
+  draw(event)
 });
 
 canvas.addEventListener('mouseup', function(event) {
