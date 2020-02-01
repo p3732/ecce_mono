@@ -1,18 +1,22 @@
 var imagesDiv = document.getElementById("images");
 
 var voteCounters = []
-
+var entries = []
 
 function updateVotes() {
-
-
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            argmax = 0;
             votes = JSON.parse(this.responseText)
             for (i=0; i<votes.length; i++) {
-                voteCounters[i].innerHTML = votes[i];
+                v = votes[i]
+                voteCounters[i].innerHTML = v;
+                if (v>votes[argmax]) {
+                    argmax = i;
+                }
             }
+            entries[argmax].classList.add('pulse');
         }
     };
     request.open("GET", "/api/host/votes", false);
@@ -52,12 +56,12 @@ function setImages(images) {
         partB = imgString.slice(21, -1)
         partB = partB.replace(/\./g, '\/')
         imgString = partA + partB
-        //imgString = imgString.replace(/\//g, '.')
         imgString =  imgString.replace(/-/g, '=')
 
 
         container = document.createElement("figure");
         container.setAttribute("class", "entry");
+        entries.push(container);
         imagesDiv.append(container);
 
 
@@ -71,7 +75,7 @@ function setImages(images) {
         votesIcon = document.createElement("div");
         votesIcon.innerHTML = '#'
         votesCounter = document.createElement("div");
-        voteCounters[i] = votesCounter;
+        voteCounters.push(votesCounter);
         votes.append(votesIcon);
         votes.append(votesCounter);
         votesCounter.innerHTML = 0;
