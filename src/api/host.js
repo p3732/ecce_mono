@@ -1,5 +1,5 @@
 var express = require('express');
-var log     = require("../logging.js")("api/", 6);
+var log     = require("../logging.js")("a/host", 6);
 
 // globally available variables
 var Level;
@@ -10,9 +10,14 @@ function getAPIDescription(req, res) {
   });
 }
 
-function getCurrentSubmissions(req, res) {
-  log("not implemented yet")
-  res.end();
+function getCurrentLevel(req, res) {
+  log("requested current level")
+  res.send(global_current_level);
+}
+
+function getAllSubmissions(req, res) {
+  log("requested stored images")
+  res.send(global_stored_images);
 }
 
 // default upon error is start random
@@ -25,6 +30,9 @@ function startEcceMono(req, res) {
     id = Math.ceil(Math.random() * global_amount_levels)
   }
   log(id)
+
+  // set global state
+  global_state = "draw";
 
   // clear stored images
   global_stored_images = [];
@@ -47,9 +55,11 @@ module.exports = function(db) {
   Level = db.sequelize.models.Level;
 
   router.get("/", getAPIDescription);
-  router.get("/current", getCurrentSubmissions);
+  router.get("/current", getCurrentLevel);
+  router.get("/gallery", getAllSubmissions);
   router.post("/start", startRandomEcceMono);
   router.post("/start/:id", startEcceMono);
+  // TODO testing only, delete after
   router.get("/start_by_query", startRandomEcceMono);
   router.get("/start_by_query/:id", startEcceMono);
 
