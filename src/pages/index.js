@@ -1,15 +1,23 @@
 var express = require('express');
 
 function getClientPage(req, res) {
-  res.render("client_page", {
-    title: "Ecce Mono"
-  });
+  if (global_state == "draw") {
+    res.redirect("/html/client/draw.html");
+  } else if (global_state == "vote") {
+    res.redirect("/html/client/vote.html");
+  } else {
+    res.redirect("/html/client/init.html");
+  }
 }
 
 function getHostPage(req, res) {
-  res.render("host_page", {
-    title: "Ecce Mono"
-  });
+  if (global_state == "draw") {
+    res.redirect("/html/host/draw.html");
+  } else if (global_state == "vote") {
+    res.redirect("/html/host/vote.html");
+  } else {
+    res.redirect("/html/host/init.html");
+  }
 }
 
 module.exports = function(db) {
