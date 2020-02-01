@@ -3,10 +3,30 @@ var imagesDiv = document.getElementById("images");
 var voteCounters = []
 var entries = []
 
+
+//var image = new Image();
+//var request = new XMLHttpRequest();
+//request.onreadystatechange = function() {
+//    if (this.readyState == 4 && this.status == 200) {
+//        level = JSON.parse(this.responseText)
+//        image.src = level.image
+//    }
+//};
+//request.open("GET", "/api/client/current", false);
+//request.send();
+
+
+var VOTE_SECONDS = 20;
+
+
+var timer = document.getElementById("timer");
+var voteTimeout = 0;
+
 function updateVotes() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+
             argmax = 0;
             votes = JSON.parse(this.responseText)
             for (i=0; i<votes.length; i++) {
@@ -19,7 +39,9 @@ function updateVotes() {
             for (i=0; i<entries.length; i++) {
                 entries[i].classList.remove("pulse");
             }
-            entries[argmax].classList.add('pulse');
+            if (votes.length > 0) {
+                entries[argmax].classList.add('pulse');
+            }
         }
     };
     request.open("GET", "/api/host/votes", false);
@@ -39,6 +61,8 @@ function updateGallery() {
     request.open("GET", "/api/host/gallery", false);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
+
+    voteTimeout = Date.now() + VOTE_SECONDS * 1000
 }
 
 
@@ -69,6 +93,12 @@ function setImages(images) {
 
 
         img = document.createElement("img");
+        //console.log(image.width)
+        //context = img.getContext('2d');
+        //img.width = image.width;
+        //img.height = image.height;
+        //context.drawImage(image, 0, 0)
+
         img.setAttribute('class', "image");
         img.setAttribute('src', imgString);
         container.append(img)
@@ -90,12 +120,29 @@ function setImages(images) {
 
 }
 
+
+function voteTimer() {
+    seconds = ((voteTimeout - Date.now()) / 1000)
+    seconds = Math.max(seconds, 0)
+    timer.innerHTML = seconds.toFixed(1)
+
+    // redirect
+    if (seconds==0) {
+        //window.location.replace("/html/host/draw.html");
+    }
+}
+
+
+
 function clearImages() {
     while (images.firstChild) {
         images.removeChild(images.firstChild);
     }
 }
 
+setTimeout(updateGallery(), 3000);
+
 updateGallery()
 
 window.setInterval(updateVotes, 300);
+window.setInterval(voteTimer, 50);
