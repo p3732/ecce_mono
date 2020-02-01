@@ -32,7 +32,7 @@ function getAllSubmissions(req, res) {
 startRandomizedGame = startGame;
 
 function startGame(req, res) {
-  if (global_state != "init") {
+  if (global_state == "draw") {
     log.warn("tried to start new game, but not in init state");
     res.end();
   } else {
