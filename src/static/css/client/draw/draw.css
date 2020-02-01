@@ -1,7 +1,15 @@
 body {
     margin: 0px;
+    background-color: #666666;
+
 }
 
+
+#submit {
+    position: fixed;
+    z-index: 2;
+    right: 0;
+}
 
 #timer {
     position: fixed;
@@ -14,18 +22,17 @@ body {
 }
 
 #canvas {
+    background-color: red;
     position: fixed;
     z-index: 1;
-    width: 99%;
+    width: 100%;
     height: 85%;
 }
 
 #brushButtons {
-    background-color: red;
     text-align: center;
     position: fixed;
-    top: 85vh;
-    height: 15vh;
-    width: 100vw;
+    bottom: 0px;
+    width: 100%;
     z-index: 1;
 }

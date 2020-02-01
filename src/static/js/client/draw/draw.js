@@ -8,12 +8,18 @@ var overlayImage = new Image;
 var mouseIsDown = false;
 var prevMouseDownCoords = null;
 var canvas = document.getElementById("canvas");
+var submissionCanvas = document.getElementById("submissionCanvas");
+
 var context = canvas.getContext('2d');
+var submissionContext = submissionCanvas.getContext('2d');
+
 
 var timer = document.getElementById("timer");
 var levelTimeout = 0;
 
 brush = new Image();
+
+var xOffset, yOffset;
 
 
 brushButtonsDiv = document.getElementById("brushButtons");
@@ -47,7 +53,7 @@ function updateCurrentLevel() {
 function setCurrentLevel(level) {
     console.log("Setting level")
     level = JSON.parse(level)
-    
+
     levelTimeout = level.timeout
     setOverlayImage(server + level.overlay)
     setBrushButtons([
@@ -62,12 +68,6 @@ function setCurrentLevel(level) {
 
 updateCurrentLevel()
 
-function setCanvasPos(x, y, width, height) {
-    canvas.style.left = x.toString() + "px";
-    canvas.style.top = y.toString() + "px";
-    canvas.style.width = width;
-    canvas.style.height = height;
-}
 
 function setBrush(brushName) {
     brush = document.getElementById(brushName);
@@ -120,9 +120,17 @@ function setOverlayImage(url) {
         canvas.width  =  canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
 
+        submissionCanvas.width = overlayImage.width;
+        submissionCanvas.height = overlayImage.height;
+
         ratioWidth = canvas.width / overlayImage.width;
         ratioHeight = canvas.height / overlayImage.height;
         ratio = Math.min(ratioWidth, ratioHeight);
+
+        //canvas.width = overlayImage.width*ratio;
+        //canvas.height = overlayImage.height*ratio;
+        //canvas.style.width = overlayImage.width*ratio + "px";
+        //canvas.style.height = overlayImage.width*ratio + "px";
 
         xOffset = (canvas.width - overlayImage.width*ratio) / 2;
         yOffset = (canvas.height - overlayImage.height*ratio) / 2;
@@ -141,7 +149,17 @@ function setOverlayImage(url) {
 
 function submitImage() {
     var image = new Image();
-	image.src = canvas.toDataURL("image/png");
+
+    // transform drawing canvas to expeted overlay size
+    submissionContext.drawImage(canvas, xOffset, yOffset,
+                                    canvas.width + xOffset,
+                                    canvas.height + yOffset,
+                                    0, 0,
+                                    submissionCanvas.width,
+                                    submissionCanvas.height);
+
+
+	image.src = submissionCanvas.toDataURL("image/png");
     var request = new XMLHttpRequest();
     request.open("POST", server+"api/client/current", true);
     request.send(image);

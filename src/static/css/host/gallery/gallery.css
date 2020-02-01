@@ -1,0 +1,28 @@
+body {
+    margin: 0px;
+}
+
+
+#images {
+
+}
+
+
+.imageDiv {
+
+}
+
+
+.votes {
+    
+}
+
+#timer {
+    position: fixed;
+    padding: 3%;
+    z-index: 1;
+    font-family: Arial;
+    font-weight: bold;
+    color:
+    darkred;
+}
