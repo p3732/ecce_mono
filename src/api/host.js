@@ -29,9 +29,13 @@ function getAllSubmissions(req, res) {
   res.send(global_stored_images);
 }
 // default upon error is start random
-startRandomEcceMono = startEcceMono;
+startRandomizedGame = startGame;
 
-function startEcceMono(req, res) {
+function startGame(req, res) {
+  if (global_state != "init") {
+    log.warn("tried to start new game, but not in init state");
+    res.end();
+  }
   let id = req.params.id;
   if (!Number.isInteger(id) || id < 1 || id > global_amount_levels) {
     // set random level id
@@ -60,10 +64,10 @@ function startEcceMono(req, res) {
 }
 
 function getVotes(req, res) {
-  if (global_state == "vote"){
+  if (true) {//TODO global_state == "vote"){
     res.send(global_votes);
   } else {
-    warn("requested votes, but not in voting state");
+    log.warn("requested votes, but not in voting state");
     res.end();
   }
 }
@@ -76,11 +80,11 @@ module.exports = function(db) {
   router.get("/all_levels", getAllLevels);
   router.get("/current", getCurrentLevel);
   router.get("/gallery", getAllSubmissions);
-  router.post("/start", startRandomEcceMono);
-  router.post("/start/:id", startEcceMono);
+  router.post("/start", startRandomizedGame);
+  router.post("/start/:id", startGame);
   // TODO testing only, delete after
-  router.get("/start_by_query", startRandomEcceMono);
-  router.get("/start_by_query/:id", startEcceMono);
+  router.get("/start_by_query", startRandomizedGame);
+  router.get("/start_by_query/:id", startGame);
   router.get("/votes", getVotes);
 
   return router;

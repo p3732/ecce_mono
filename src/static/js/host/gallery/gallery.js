@@ -1,5 +1,26 @@
 var imagesDiv = document.getElementById("images");
 
+var voteCounters = []
+
+
+function updateVotes() {
+
+
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            votes = JSON.parse(this.responseText)
+            for (i=0; i<votes.length; i++) {
+                voteCounters[i].innerHTML = votes[i];
+            }
+        }
+    };
+    request.open("GET", "/api/host/votes", false);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send();
+}
+
+
 
 function updateGallery() {
     var request = new XMLHttpRequest();
@@ -19,7 +40,7 @@ function setImages(images) {
 
     clearImages()
     console.log(images.length)
-
+    voteCounters = []
 
     for (i=0; i<images.length; i++) {
         imgString = images[i]
@@ -35,12 +56,26 @@ function setImages(images) {
         imgString =  imgString.replace(/-/g, '=')
 
 
-        container = document.createElement("div");
+        container = document.createElement("figure");
         container.setAttribute("class", "entry");
         imagesDiv.append(container);
+
+
         img = document.createElement("img");
+        img.setAttribute('class', "image");
         img.setAttribute('src', imgString);
         container.append(img)
+
+        votes = document.createElement("div");
+        votes.setAttribute('class', "votes");
+        votesIcon = document.createElement("div");
+        votesIcon.innerHTML = '#'
+        votesCounter = document.createElement("div");
+        voteCounters[i] = votesCounter;
+        votes.append(votesIcon);
+        votes.append(votesCounter);
+        votesCounter.innerHTML = 0;
+        container.append(votes)
     }
 
     //image.src = submissionCanvas.toDataURL("image/png");
@@ -55,3 +90,5 @@ function clearImages() {
 }
 
 updateGallery()
+
+window.setInterval(updateVotes, 300);
