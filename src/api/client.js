@@ -1,5 +1,5 @@
 var express = require('express');
-var log     = require("../logging.js")("api/", 6);
+var log     = require("../logging.js")("a/clnt", 6);
 
 // globally available variables
 var Level;
@@ -17,11 +17,13 @@ function getCurrent(req, res) {
 
 function postImage(req, res) {
   // TODO check input
-  // TODO store image to some cache
-  // TODO save in global state
-  // global_stored_images.append()
-  log("not implemented yet")
-  res.redirect("/")
+  try{
+    // save in global state
+    global_stored_images.push(req.body)
+  } catch(error) {
+    log("can't handle posted image")
+  }
+  res.redirect("/html/client/draw/draw.html")
 }
 
 function getAllLevels(req, res) {

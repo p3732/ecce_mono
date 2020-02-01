@@ -1,13 +1,10 @@
-extends ../header/generic_header
+extends api
 
-block content
-  h1 #{title}
-
-  p The following functionality is currently supported:
-      ul
-        li GET /host/current to get the submissions of the current level
-        li POST to /host/start to start a random new level
-        li POST to /host/start/:id to start level with specific ID
-        li GET /host/start_by_query to start a random new level and receive it
-        li GET /host/start_by_query/:ID to start a specific level and receive it
+block api_list_elements
+  li GET /host/current to get the submissions of the current level
+  li GET /host/gallery to receive all the images that were posted
+  li POST to /host/start to start a random new level
+  li POST to /host/start/:id to start level with specific ID
+  li TESTING ONLY: GET /host/start_by_query to start a random new level and receive it
+  li TESTING ONLY: GET /host/start_by_query/:ID to start a specific level and receive it
 
