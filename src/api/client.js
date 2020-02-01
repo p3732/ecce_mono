@@ -47,11 +47,14 @@ function getSubmissionAmount(req, res) {
 }
 
 function voteForSubmission(req, res) {
+  let id = req.params.id;
   // check that this id can actually be voted for
   /*global_state == "vote" &&*/
   if ( Number.isInteger(id) && id > 0
       && id <= global_votes.length) {
-    global_votes[req.params.id-1] += 1;
+    log("voted for "+ id);
+    global_votes[id-1] += 1;
+    log(id + " now has " + global_votes[id-1] + " votes");
   }
   res.end();
 }
