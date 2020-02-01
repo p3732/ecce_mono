@@ -1,0 +1,44 @@
+body {
+    margin: 0px;
+    background: white url(/img/misc/white_wall.jpg) no-repeat fixed top;
+    background-size: cover;
+}
+
+#painting {
+    position: absolute;
+
+    height: 97%;
+
+    top: 1%;
+    bottom: 2%;
+    right: 10%;
+
+    width: auto;
+}
+
+#picture {
+    position: relative;
+    
+    height: 84%;
+    width: auto;
+
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 8%;
+    padding-bottom: 8%;
+
+    z-index: -1;
+}
+
+#ecce_mono {
+    position: absolute;
+
+    background: url(/img/misc/graffiti.png) no-repeat;
+    background-size: contain;
+
+    height: 60%;
+    width: 80%;
+
+    top: 100px;
+    left: 50px;    
+}
