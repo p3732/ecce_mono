@@ -16,6 +16,9 @@ function updateVotes() {
                     argmax = i;
                 }
             }
+            for (i=0; i<entries.length; i++) {
+                entries[i].classList.remove("pulse");
+            }
             entries[argmax].classList.add('pulse');
         }
     };
