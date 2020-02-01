@@ -2,6 +2,7 @@ body {
     margin: 0px;
     width:100vw;
     height:100vh;
+    background-color: #d0c5af;
 }
 
 #images {
@@ -22,6 +23,7 @@ body {
     float: left;
     width: 10%;
     margin: 1%;
+    background-color: white;
 }
 
 
