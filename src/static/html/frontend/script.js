@@ -129,7 +129,7 @@ function submitImage() {
     var image = new Image();
 	image.src = canvas.toDataURL("image/png");
     var request = new XMLHttpRequest();
-    request.open("POST", server+"client/current", true);
+    request.open("POST", server+"api/client/current", true);
     request.send(image);
 }
 
