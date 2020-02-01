@@ -5,9 +5,12 @@
     </head>
 
     <body>
-        <button type="button" name="submit" onclick="submitImage()" style="display:none">Submit</button>
+        <button type="button" id="submit" name="submit" onclick="submitImage()">Submit</button>
 
-        <canvas id="canvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
+        <canvas id="canvas" width="200" height="100"></canvas>
+
+        <canvas id="submissionCanvas" width="10" height="10" style="display:none;"></canvas>
+
 
         <div id="brushButtons">
         </div>
