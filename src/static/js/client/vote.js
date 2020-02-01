@@ -34,7 +34,10 @@ function setImages(ims) {
 }
 
 function likeImage() {
-    // TODO Like
+    var request = new XMLHttpRequest();
+    request.open("POST", "/api/host/vote/"+index, false);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send();
     nextImage()
 }
 
