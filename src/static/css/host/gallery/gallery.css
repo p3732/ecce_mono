@@ -4,20 +4,17 @@ body {
 
 
 #images {
-
+    display: flex;
 }
 
 
 .entry {
-    min-width: 400px;
-    min-height: 400px;
     border: 1px solid black;
-
 }
 
 
 .image {
-
+    width: 25%;
 }
 
 
