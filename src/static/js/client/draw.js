@@ -159,29 +159,13 @@ function submitImage() {
                                     submissionCanvas.width,
                                     submissionCanvas.height);
 
-    console.log(xOffset)
-    console.log(yOffset)
-    console.log(canvas.width)
-    console.log(canvas.height)
-    console.log(submissionCanvas.width)
-    console.log(submissionCanvas.height)
-
-	//image.src = submissionCanvas.toDataURL("image/png");
-    //console.log(submissionCanvas.toDataURL("image/png"))
 
     subm = submissionCanvas.toDataURL("image/png");
 
     var submRequest = new XMLHttpRequest();
     submRequest.open("POST", "/api/client/current", false);
     submRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    //submRequest.setRequestHeader('Content-Type', 'application/json');
 
-    //submRequest.send(JSON.stringify({"img": subm}));
-
-    //request.onreadystatechange = function(x) {
-    //    console.log(x);
-    //}
-    //console.log(subm)
     subm = subm.replace(/\+/g, '_')
     console.log(subm)
 
@@ -195,14 +179,14 @@ function submitImage() {
 
     submRequest.send("imgData=" + subm);
 
-    body = document.getElementById("body");
-    img = document.createElement("img");
-    subm =  subm.replace(/_/g, '\+')
-    subm =  subm.replace(/\./g, '\/')
-    subm =  subm.replace(/-/g, '=')
-    console.log(subm)
-    img.setAttribute('src',subm);
-    document.body.append(img);
+    //body = document.getElementById("body");
+    //img = document.createElement("img");
+    //subm =  subm.replace(/_/g, '\+')
+    //subm =  subm.replace(/\./g, '\/')
+    //subm =  subm.replace(/-/g, '=')
+    //console.log(subm)
+    //img.setAttribute('src',subm);
+    //document.body.append(img);
 }
 
 
