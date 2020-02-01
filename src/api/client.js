@@ -23,6 +23,7 @@ function postImage(req, res) {
       log("received image data");
       // save in global state
       global_stored_images.push(imgage_data);
+      global_votes.push(0)
     }
   } catch(error) {
     log("can't handle posted image");
