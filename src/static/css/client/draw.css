@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    background-color: #666666;
+    background-color: #2f2e2e;
 
 }
 
@@ -17,12 +17,10 @@ body {
     z-index: 1;
     font-family: Arial;
     font-weight: bold;
-    color:
-    darkred;
+    color: darkred;
 }
 
 #canvas {
-    background-color: red;
     position: fixed;
     z-index: 1;
     width: 100%;
@@ -35,4 +33,6 @@ body {
     bottom: 0px;
     width: 100%;
     z-index: 1;
+    background-color: #202020;
+    border-top: 1px solid gray;
 }
