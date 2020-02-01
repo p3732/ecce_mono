@@ -162,8 +162,15 @@ function submitImage() {
 	//image.src = submissionCanvas.toDataURL("image/png");
     //console.log(submissionCanvas.toDataURL("image/png"))
     var request = new XMLHttpRequest();
-    request.open("POST", server+"api/client/current", true);
-    request.send(submissionCanvas.toDataURL("image/png"));
+    request.open("POST", "/api/client/current", false);
+    subm = submissionCanvas.toDataURL("image/png");
+    //request.setRequestHeader("Content-type", "image/png");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("imgData=" + subm);
+
+
+    console.log(subm);
+
 }
 
 
