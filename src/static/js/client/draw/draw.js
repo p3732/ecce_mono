@@ -26,7 +26,7 @@ brushButtonsDiv = document.getElementById("brushButtons");
 
 
 
-var server = "http://localhost:3300/"
+var server = "/"
 
 
 function updateCurrentLevel() {
@@ -148,7 +148,7 @@ function setOverlayImage(url) {
 
 
 function submitImage() {
-    var image = new Image();
+    //var image = new Image();
 
     // transform drawing canvas to expeted overlay size
     submissionContext.drawImage(canvas, xOffset, yOffset,
@@ -159,10 +159,11 @@ function submitImage() {
                                     submissionCanvas.height);
 
 
-	image.src = submissionCanvas.toDataURL("image/png");
+	//image.src = submissionCanvas.toDataURL("image/png");
+    //console.log(submissionCanvas.toDataURL("image/png"))
     var request = new XMLHttpRequest();
     request.open("POST", server+"api/client/current", true);
-    request.send(image);
+    request.send(submissionCanvas.toDataURL("image/png"));
 }
 
 
