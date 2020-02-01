@@ -1,24 +1,35 @@
 body {
     margin: 0px;
+    width:100vw;
+    height:100vh;
 }
 
-
 #images {
+
 }
 
 
 .entry {
     border: 1px solid black;
+    float: left;
+    width: 10%;
+    margin: 1%;
 }
 
 
 .image {
+    width: 100%;
+    height: 100%;
 }
 
 
 .votes {
-
+    text-align: center;
+    font-family: Arial;
+    font-size: 1.3em;
+    display: flex;
 }
+
 
 #timer {
     position: fixed;
