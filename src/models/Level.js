@@ -11,12 +11,12 @@ module.exports = function(sequelize, DataTypes) {
     y: {type: DataTypes.INTEGER, allowNull: false},
     width: {type: DataTypes.INTEGER, allowNull: false},
     height: {type: DataTypes.INTEGER, allowNull: false},
-    timeout: {type: DataTypes.INTEGER, allowNull: false},
-    hex_value_1: {type: DataTypes.TEXT, allowNull: false},
-    hex_value_2: {type: DataTypes.TEXT, allowNull: true},
-    hex_value_3: {type: DataTypes.TEXT, allowNull: true},
-    hex_value_4: {type: DataTypes.TEXT, allowNull: true},
-    hex_value_5: {type: DataTypes.TEXT, allowNull: true}
+    timeout: {type: DataTypes.INTEGER, defaultValue: 50},
+    brush_1: {type: DataTypes.TEXT, defaultValue: "pen_000000"},
+    brush_2: {type: DataTypes.TEXT, allowNull: true},
+    brush_3: {type: DataTypes.TEXT, allowNull: true},
+    brush_4: {type: DataTypes.TEXT, allowNull: true},
+    brush_5: {type: DataTypes.TEXT, allowNull: true}
   });
 
   return Level;

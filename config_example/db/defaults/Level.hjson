@@ -2,8 +2,8 @@
    * List of levels.
    * To create a new level give it a title, point to the image to use, the
    * overlay for the image and the overlay position where x and y are thoe of
-   * the top left corner. A timeout (in seconds) and a set of colors (as hex
-   * values) have to be defined.
+   * the top left corner. A timeout (in seconds) and a set of brushes (referred
+   * to by title) can be defined, but defaults exist.
    */
   selectors: [ "title" ]
   default_values: [
@@ -12,28 +12,26 @@
                overlay: img/overlay/mona_lisa_face.png
                x:215, y:77, width: 370, height: 484
                timeout: 30
-               hex_value_1: FFFFFF
-               hex_value_2: 5e2a15
+               # hex_value_1: FFFFFF
+               # hex_value_2: 5e2a15
     }},
 
     { where: { title: madame_roulin_and_her_baby
                image: img/painting/madame_roulin_and_her_baby.jpg
                overlay: img/overlay/madame_roulin_and_her_baby.png
                x:61, y:1204, width: 2558, height: 2517
-               timeout: 30
-               hex_value_1: D7956E
-               hex_value_2: E8E1CE
-               hex_value_3: 447D0F
+               brush_1: pen_D7956E
+               # brush_2: pen_E8E1CE
+               # brush_3: pen_447D0F
     }},
 
     { where: { title: girl_in_a_blue_dress
                image: img/painting/young_girl_in_blue_dress.png
                overlay: img/overlay/young_girl_in_blue_dress.png
                x:173, y:54, width: 838, height: 1050
-               timeout: 30
-               hex_value_1: E4AEAA
-               hex_value_2: 38325A
-               hex_value_3: D3B37F
+               # brush_1: pen_E4AEAA
+               # brush_2: pen_38325A
+               # brush_3: pen_D3B37F
     }}
   ]
 }
