@@ -1,0 +1,36 @@
+body {
+    margin: 0px;
+}
+
+#painting {
+    position: fixed;
+    height: 80vh;
+    z-index: 0;
+    clip: rect(0px,60px,200px,0px);
+}
+
+#overlay {
+    display: none;
+}
+
+#canvas {
+    position: fixed;
+    z-index: 1;
+    width: 99%;
+    height: 85%;
+}
+
+#brushButtons {
+    background-color: red;
+    text-align: center;
+    position: fixed;
+    top: 85vh;
+    height: 15vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+
+.brush {
+    display: none;
+}
