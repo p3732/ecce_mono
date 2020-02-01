@@ -16,10 +16,14 @@ function getCurrent(req, res) {
 }
 
 function postImage(req, res) {
-  // TODO check input
   try{
-    // save in global state
-    global_stored_images.push(req.body);
+    let imgage_data = req.body.imgData;
+    // check input
+    if (imgage_data && imgage_data.startsWith("data:image/png")) {
+      log("received image data");
+      // save in global state
+      global_stored_images.push(imgage_data);
+    }
   } catch(error) {
     log("can't handle posted image");
   }
@@ -36,7 +40,6 @@ function getLevel(req, res) {
     res.send(data);
   });
 }
-
 
 function getSubmissionAmount(req, res) {
   res.send(global_stored_images.length)
