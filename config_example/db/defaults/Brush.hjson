@@ -1,0 +1,21 @@
+{ /**
+   * List of levels.
+   * To create a new level give it a title, point to the image to use, the
+   * overlay for the image and the overlay position where x and y are thoe of
+   * the top left corner. A timeout (in seconds) and a set of colors (as hex
+   * values) have to be defined.
+   */
+  selectors: [ "title" ]
+  default_values: [
+    { where: { title: pen_000000
+               image: img/tool/pen.png
+               brush: img/brush/pen_000000.png
+               color: 000000
+    }},
+    { where: { title: pen_D7956E
+               image: img/tool/pen.png
+               brush: img/brush/pen_D7956E.png
+               color: D7956E
+    }}
+  ]
+}
