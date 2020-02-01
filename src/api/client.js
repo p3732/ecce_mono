@@ -27,7 +27,7 @@ function postImage(req, res) {
   } catch(error) {
     log("can't handle posted image");
   }
-  res.redirect("/html/client/draw/draw.html");
+  res.redirect("/html/client/draw.html");
 }
 
 function getLevel(req, res) {
@@ -56,7 +56,7 @@ function voteForSubmission(req, res) {
 
 module.exports = function(db) {
   var router = express.Router();
-  // Level = db.sequelize.models.Level;
+  Level = db.sequelize.models.Level;
 
   router.get("/", getAPIDescription);
   router.get("/current", getCurrent);
