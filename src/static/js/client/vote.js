@@ -35,8 +35,9 @@ function decode(img) {
 
 function setImages(ims) {
     images = JSON.parse(ims)
-    index = 0;
-    imgDiv.src = decode(images[index])
+    console.log("Images: " + images.length)
+    index = -1;
+    nextImage()
 }
 
 function likeImage() {
@@ -49,6 +50,7 @@ function likeImage() {
 
 function nextImage() {
     index += 1
+    console.log("index: " + index)
     if (index < images.length) {
         imgDiv.src = decode(images[index])
         like.disabled = false;
@@ -61,4 +63,4 @@ function nextImage() {
     }
 }
 
-setTimeout(updateGallery(), 10000 + Math.random()*3000);
+setTimeout(updateGallery(), 10000*0 + Math.random()*3000);
