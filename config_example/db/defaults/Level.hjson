@@ -8,8 +8,8 @@
   selectors: [ "title" ]
   default_values: [
     { where: { title: mona_lisa_face
-               image: img/painting/mona_lisa.jpg
-               overlay: img/overlay/mona_lisa_face.png
+               image: /img/painting/mona_lisa.jpg
+               overlay: /img/overlay/mona_lisa_face.png
                x:215, y:77, width: 370, height: 484
                timeout: 30
                brush_1: pen_643224
@@ -18,8 +18,8 @@
     }},
 
     { where: { title: madame_roulin_and_her_baby
-               image: img/painting/madame_roulin_and_her_baby.jpg
-               overlay: img/overlay/madame_roulin_and_her_baby.png
+               image: /img/painting/madame_roulin_and_her_baby.jpg
+               overlay: /img/overlay/madame_roulin_and_her_baby.png
                x:61, y:1204, width: 2558, height: 2517
                brush_1: pen_E4CDB5
                brush_2: pen_E8E1CE
@@ -27,14 +27,11 @@
     }},
 
     { where: { title: girl_in_a_blue_dress
-               image: img/painting/young_girl_in_blue_dress.png
-               overlay: img/overlay/young_girl_in_blue_dress.png
-               x:173, y:54, width: 838, height: 1050
+               image: /img/painting/young_girl_in_blue_dress.jpg
+               overlay: /img/overlay/young_girl_in_blue_dress.jpg
+               x:200, y:41, width: 398, height: 565
                brush_1: pen_E4CDB5
                brush_2: pen_38325A
-
-               # brush_1: pen_E4AEAA
-               # brush_3: pen_D3B37F
     }}
   ]
 }
