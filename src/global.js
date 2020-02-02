@@ -8,6 +8,8 @@ module.exports = async function(db) {
 
   global.global_current_level = null;
   // states are: init, draw, vote
+  global.global_ip = null;
+  global.global_port = null;
   global.global_state = "init";
   global.global_stored_images = [];
   global.global_timeout = null;

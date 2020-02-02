@@ -1,5 +1,5 @@
 const http = require('http');
-const ip = require("ip");
+const ip   = require("ip");
 const log  = require("./logging.js")("server", 6);
 
 /** Starts the server and binds it to the port. */
@@ -11,6 +11,9 @@ this.start = function(server_config, router) {
 
   log("starting");
   let address = ip.address();
+  // set to global
+  global_ip = address;
+  global_port = port
   server.listen(port, address);
 
   server.on("listening", function onListening() {
