@@ -1,5 +1,6 @@
 var timer = document.getElementById("timer");
 var levelTimeout = 0;
+var ipSpan = document.getElementById("ip");
 
 var picuture = document.getElementById("picuture");
 
@@ -30,7 +31,6 @@ function updateCurrentLevel() {
  }
 
 
-
 function setCurrentLevel(level) {
     console.log("Setting level")
     level = JSON.parse(level)
@@ -44,6 +44,24 @@ function setCurrentLevel(level) {
     //canvas = overlayOnImage(level.image, level.overlay, level.x, level.y)
     //picture.src = canvas.toDataURL();
 
+}
+
+function getIP() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            showIP(this.responseText)
+        }
+    };
+    request.open("GET", "/api/ip", false);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send();
+}
+
+function showIP(text)
+{
+    console.log(text)
+    ipSpan.innerText = text;
 }
 
 updateCurrentLevel()
