@@ -29,8 +29,10 @@ function updateVotes() {
 
             argmax = 0;
             votes = JSON.parse(this.responseText)
+
             for (i=0; i<votes.length; i++) {
                 v = votes[i]
+                console.log(voteCounters.length)
                 if (voteCounters.length > i) {
                     voteCounters[i].innerHTML = v;
                     if (v>votes[argmax]) {
@@ -70,7 +72,7 @@ function updateGallery() {
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 
-    voteTimeout = Date.now() + VOTE_SECONDS * 1000
+    //voteTimeout = Date.now() + VOTE_SECONDS * 1000
 
 }
 
@@ -78,11 +80,15 @@ function updateGallery() {
 function setImages(images) {
     images = JSON.parse(images)
 
-    clearImages()
+    //clearImages()
     console.log(images.length)
-    voteCounters = []
+    //voteCounters = []
 
     for (i=0; i<images.length; i++) {
+        console.log("c"+document.getElementById("images").childNodes.length)
+        if (imagesDiv.childNodes.length > i+1) {
+            continue;
+        }
         imgString = images[i]
 
         // decoding
@@ -145,9 +151,9 @@ function nextLevel() {
 }
 
 function voteTimer() {
-    seconds = ((voteTimeout - Date.now()) / 1000)
-    seconds = Math.max(seconds, 0)
-    timer.innerHTML = seconds.toFixed(1)
+    //seconds = ((voteTimeout - Date.now()) / 1000)
+    //seconds = Math.max(seconds, 0)
+    //timer.innerHTML = seconds.toFixed(1)
 
     // redirect
     //if (seconds==0) {
