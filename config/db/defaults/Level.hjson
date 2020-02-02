@@ -11,7 +11,7 @@
                image: /img/painting/mona_lisa.jpg
                overlay: /img/overlay/mona_lisa_face.jpg
                x:215, y:77, width: 370, height: 484
-               timeout: 30
+               timeout: 90
                brush_1: pen_643224
                brush_2: pen_CC0E51
                # hex_value_2: 5e2a15
