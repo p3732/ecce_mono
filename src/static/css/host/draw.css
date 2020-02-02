@@ -2,6 +2,7 @@ body {
     margin: 0px;
     background: burlywood url(/img/misc/wood.jpg) no-repeat fixed top;
     background-size: cover;
+    touch-action: none;
 }
 
 #clock {
@@ -34,11 +35,11 @@ body {
 #ip {
     position: absolute;
     font-size: 32px;
-    color: darkblue;    
+    color: darkblue;
     text-align: center;
     font-family: sans-serif;
     vertical-align: bottom;
-    
+
     bottom: 50px;
     left: 40px;
 }
@@ -67,14 +68,14 @@ body {
     position: absolute;
     height: 100%;
     width: 116%;
-    
+
     background: url(/img/misc/frame.png) no-repeat;
     background-size: 100% 100%;
 }
 
 #picture {
     position: relative;
-    
+
     height: 84%;
     width: auto;
 

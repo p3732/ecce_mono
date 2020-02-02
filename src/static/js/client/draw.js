@@ -131,8 +131,21 @@ function setBrushButtons(brushNames) {
 
 function getMouseCoords(canvas, event) {
     bounds = canvas.getBoundingClientRect()
-    x = event.clientX - bounds.left
-    y = event.clientY - bounds.top
+    //console.log(event.touches[0])
+
+    if (event.touches) {
+        isTouch = true;
+    } else {
+        isTouch = false;
+    }
+
+    if (isTouch) {
+        x = event.touches[0].pageX - bounds.left
+        y = event.touches[0].pageY - bounds.top
+    } else {
+        x = event.clientX - bounds.left
+        y = event.clientY - bounds.top
+    }
     return {x, y}
 }
 
@@ -244,19 +257,22 @@ canvas.addEventListener('touchmove', draw);
 
 
 canvas.addEventListener('mousedown', function(event) {
-  mouseIsDown = true
-  draw(event)
+    mouseIsDown = true
+    draw(event)
 });
 
 canvas.addEventListener('touchstart', function(event) {
-  mouseIsDown = true
-  draw(event)
+    //console.log("touchstart")
+    prevMouseDownCoords = getMouseCoords(canvas, event);
+    mouseIsDown = true
+    draw(event)
 });
 
 canvas.addEventListener('mouseup', function(event) {
-  mouseIsDown = false
+    mouseIsDown = false
 });
 
 canvas.addEventListener('touchend', function(event) {
-  mouseIsDown = false
+    //console.log("touchend")
+    mouseIsDown = false
 });
