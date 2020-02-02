@@ -164,5 +164,5 @@ function clearImages() {
     }
 }
 
-setTimeout(updateGallery, 5000);
+setTimeout(updateGallery, 10000);
 //setTimeout(updateGallery, 1000);
