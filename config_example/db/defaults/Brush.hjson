@@ -16,6 +16,32 @@
                image: img/tool/pen.png
                brush: img/brush/pen_D7956E.png
                color: D7956E
+    }},
+    { where: { title: pen_E4CDB5
+               image: img/tool/pen.png
+               brush: img/brush/pen_E4CDB5.png
+               color: E4CDB5
+    }},    
+    { where: { title: pen_E8E1CE
+               image: img/tool/pen.png
+               brush: img/brush/pen_E8E1CE.png
+               color: E8E1CE
+    }},    
+    { where: { title: pen_447D0F
+               image: img/tool/pen.png
+               brush: img/brush/pen_447D0F.png
+               color: 447D0F
     }}
+    { where: { title: pen_CC0E51
+               image: img/tool/pen.png
+               brush: img/brush/pen_CC0E51.png
+               color: CC0E51
+    }}    
+    { where: { title: pen_38325A
+               image: img/tool/pen.png
+               brush: img/brush/pen_38325A.png
+               color: pen_38325A
+    }}    
+
   ]
 }
