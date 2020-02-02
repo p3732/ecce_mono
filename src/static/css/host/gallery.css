@@ -2,7 +2,9 @@ body {
     margin: 0px;
     width:100vw;
     height:100vh;
-    background-color: #d0c5af;
+    /* background-color: #d0c5af; */
+    background: white url(/img/misc/white_wall.jpg) no-repeat fixed top;
+    background-size: cover;
 }
 
 #images {
