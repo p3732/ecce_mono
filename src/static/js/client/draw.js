@@ -44,11 +44,20 @@ function updateCurrentLevel() {
      seconds = Math.max(seconds, 0)
      timer.innerHTML = seconds.toFixed(1)
 
-     // redirect
      if (seconds==0) {
-         //submitImage()
-         //window.location.replace("/html/client/vote.html");
+         hideImage()
+         // redirect
+         // distribute load over time
+         setTimeout(function() {
+             submitImage();
+             window.location.replace("/html/client/vote.html");
+         }, Math.random()*5000)
      }
+ }
+
+
+ function hideImage() {
+     canvas.style.display = "none";
  }
 
 function setCurrentLevel(level) {
