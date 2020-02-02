@@ -102,7 +102,7 @@ function setBrushButtons(brushNames) {
         button.onclick = "onBrushButtonClick(this)";
         button.value = brushUrl
         brushButtonsDiv.appendChild(button);
-        button.innerHTML = '<img src=/img/brush/'+brushName+'.png" />';
+        button.innerHTML = '<img src="/img/brush/'+brushName+'.png" />';
         brush.src = brushUrl
     }
 }
