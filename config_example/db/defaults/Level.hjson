@@ -31,7 +31,7 @@
                overlay: img/overlay/young_girl_in_blue_dress.png
                x:173, y:54, width: 838, height: 1050
                brush_1: pen_E4CDB5
-               brush_2: pen_38325A
+               brush_2: bristles_38325A
 
                # brush_1: pen_E4AEAA
                # brush_3: pen_D3B37F
