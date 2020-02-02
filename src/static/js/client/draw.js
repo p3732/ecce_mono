@@ -45,12 +45,13 @@ function updateCurrentLevel() {
      timer.innerHTML = seconds.toFixed(1)
 
      if (seconds==0) {
-         hideImage()
+         //hideImage()
+
          // redirect
          // distribute load over time
          setTimeout(function() {
-             submitImage();
-             window.location.replace("/html/client/vote.html");
+             //submitImage();
+             //window.location.replace("/html/client/vote.html");
          }, Math.random()*5000)
      }
  }
@@ -81,11 +82,15 @@ updateCurrentLevel()
 
 
 function setBrush(brushName) {
-    brush = document.getElementById(brushName);
+    //brush = document.getElementById(brushName);
+    brush.src = brushName
 }
 
-function onBrushButtonClick(button) {
-    brush = document.getElementById(button.value);
+function onBrushButtonClick(id) {
+    console.log(id)
+    console.log(brush)
+    brush.src = "/img/brush/" + id
+    //brush = document.getElementById(id);
 }
 
 
@@ -96,24 +101,30 @@ function clearBrushes() {
 }
 
 function setBrushButtons(brushNames) {
-    buttons = brushButtonsDiv.childNodes;
+    //buttons = brushButtonsDiv.childNodes;
     clearBrushes()
     for (i=0; i<brushNames.length; i++) {
         brushName = brushNames[i];
         if (brushName == null) {
             continue
         }
+        console.log(brushName)
 
         var brushUrl = "/img/brush/"+brushName+".png";
 
         var button = document.createElement("BUTTON");
         button.id = "brush_"+brushName;
-        button.name = brushName;
-        button.onclick = "onBrushButtonClick(this)";
+        button.name = brushUrl;
+        button.class = "brushButton";
+        //onBrushButtonClick("brush_"+brushName);
         button.value = brushUrl
-        brushButtonsDiv.appendChild(button);
-        button.innerHTML = '<img src="/img/brush/'+brushName+'.png" />';
+        button.innerHTML = '<img src="/img/brush/'+brushName+'.png" name="'+brushUrl+'"/>';
         brush.src = brushUrl
+        button.onclick = function(e){console.log(e.target);
+                                console.log(e.target.name);
+                            brush.src = e.target.name;};
+        brushButtonsDiv.appendChild(button);
+
     }
 }
 
