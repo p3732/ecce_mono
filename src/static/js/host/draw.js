@@ -36,7 +36,8 @@ function setCurrentLevel(level) {
     level = JSON.parse(level)
 
     levelTimeout = level.timeout
-    picture.src = level.image
+    picture.src = "/"+level.image
+    console.log(level.image)
 
     window.setInterval(levelTimer, 50);
 

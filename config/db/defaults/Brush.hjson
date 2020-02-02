@@ -36,12 +36,11 @@
                image: /img/tool/pen.png
                brush: /img/brush/pen_CC0E51.png
                color: CC0E51
-    }}    
-    { where: { title: pen_38325A
-               image: /img/tool/pen.png
-               brush: /img/brush/pen_38325A.png
-               color: pen_38325A
-    }}    
-
+    }}
+    { where: { title: bristles_38325A
+               image: img/tool/pen.png
+               brush: img/brush/bristles_38325A.png
+               color: 38325A
+    }}
   ]
 }
