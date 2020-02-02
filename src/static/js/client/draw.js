@@ -57,6 +57,7 @@ function updateCurrentLevel() {
 
 
  function hideImage() {
+     console.log("Hiding Canvas")
      canvas.style.display = "none";
  }
 
