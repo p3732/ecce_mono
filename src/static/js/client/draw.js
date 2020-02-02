@@ -240,6 +240,7 @@ function draw(event) {
 }
 
 canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('touchmove', draw);
 
 
 canvas.addEventListener('mousedown', function(event) {
@@ -247,6 +248,15 @@ canvas.addEventListener('mousedown', function(event) {
   draw(event)
 });
 
+canvas.addEventListener('touchstart', function(event) {
+  mouseIsDown = true
+  draw(event)
+});
+
 canvas.addEventListener('mouseup', function(event) {
+  mouseIsDown = false
+});
+
+canvas.addEventListener('touchend', function(event) {
   mouseIsDown = false
 });
