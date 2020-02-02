@@ -31,16 +31,21 @@
                image: /img/tool/pen.png
                brush: /img/brush/pen_447D0F.png
                color: 447D0F
-    }}
+    }},
     { where: { title: pen_CC0E51
                image: /img/tool/pen.png
                brush: /img/brush/pen_CC0E51.png
                color: CC0E51
-    }}
+    }},
     { where: { title: bristles_38325A
                image: img/tool/pen.png
                brush: img/brush/bristles_38325A.png
                color: 38325A
+    }},
+    { where: { title: bristles_E8E1CE
+               image: img/tool/pen.png
+               brush: img/brush/bristles_E8E1CE.png
+               color: E8E1CE
     }}
   ]
 }

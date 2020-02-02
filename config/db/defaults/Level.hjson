@@ -33,6 +33,15 @@
                brush_1: pen_E4CDB5
                brush_2: bristles_38325A
                brush_3: pen_D7956E
+    }},
+    
+    { where: { title: lady_with_an_ermine
+               image: /img/painting/the_lady_with_an_ermine.jpg
+               overlay: /img/overlay/the_lady_with_an_ermine.jpg
+               x:246, y:41, width: 175, height: 374
+               brush_1: pen_E4CDB5
+               brush_2: bristles_E8E1CE
+               brush_3: pen_38325A
     }}
   ]
 }
