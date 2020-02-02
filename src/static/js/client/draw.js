@@ -24,11 +24,6 @@ var xOffset, yOffset;
 
 brushButtonsDiv = document.getElementById("brushButtons");
 
-
-
-var server = "/"
-
-
 function updateCurrentLevel() {
     var request = new XMLHttpRequest();
 
@@ -37,7 +32,7 @@ function updateCurrentLevel() {
             setCurrentLevel(this.responseText)
         }
     };
-    request.open("GET", server + "api/client/current", false);
+    request.open("GET", "/api/client/current", false);
     request.send();
 }
 
@@ -61,7 +56,7 @@ function setCurrentLevel(level) {
     level = JSON.parse(level)
 
     levelTimeout = level.timeout
-    setOverlayImage(server + level.overlay)
+    setOverlayImage(level.overlay)
     setBrushButtons([
         level.brush_1,
         level.brush_2,
@@ -99,7 +94,7 @@ function setBrushButtons(brushNames) {
             continue
         }
 
-        var brushUrl = server+"img/brush/"+brushName+".png";
+        var brushUrl = "/img/brush/"+brushName+".png";
 
         var button = document.createElement("BUTTON");
         button.id = "brush_"+brushName;
@@ -107,7 +102,7 @@ function setBrushButtons(brushNames) {
         button.onclick = "onBrushButtonClick(this)";
         button.value = brushUrl
         brushButtonsDiv.appendChild(button);
-        button.innerHTML = '<img src="'+server+'img/brush/'+brushName+'.png" />';
+        button.innerHTML = '<img src=/img/brush/'+brushName+'.png" />';
         brush.src = brushUrl
     }
 }

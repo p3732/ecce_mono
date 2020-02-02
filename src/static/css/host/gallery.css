@@ -66,3 +66,18 @@ body {
     color:
     darkred;
 }
+
+/* .parent-img{ */
+/*   position: relative; */
+/* } */
+
+/* .parent-img-responsive{ */
+/*   width:auto; */
+/*   height:0.7*window.innerHeight; */
+/* } */
+
+/* .child-img{ */
+/*   position: absolute; */
+/*   top: 1205*0.7*window.innerHeight / [TODO height of other image]; */
+/*   left: 128*0.7; */
+/* } */

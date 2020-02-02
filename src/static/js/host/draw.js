@@ -37,7 +37,7 @@ function setCurrentLevel(level) {
     level = JSON.parse(level)
 
     levelTimeout = level.timeout
-    picture.src = "/" + level.image
+    picture.src = level.image
 
     //canvas = overlayOnImage(level.image, level.overlay, level.x, level.y)
     //picture.src = canvas.toDataURL();

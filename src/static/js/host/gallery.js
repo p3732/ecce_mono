@@ -1,3 +1,5 @@
+// let original = document.getElementById("original");
+// let overlay = document.getElementById("overlay");
 let original = new Image();
 let overlay = new Image();
 let level = {};
@@ -7,7 +9,6 @@ function loadOriginal() {
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       level = JSON.parse(this.responseText)
-      original.setAttribute('class', "image");
       original.src = level.image
     }
   };
@@ -23,7 +24,6 @@ function loadOverlay() {
       var selected_image = gallery[0]
       selected_image = decode(selected_image)
 
-      overlay.setAttribute('class', "image");
       overlay.src = selected_image
     }
   };
@@ -55,9 +55,6 @@ async function overlayImages() {
 }
 
 function loadBothImages() {
-  // let original = document.getElementById("original");
-  // let overlay = document.getElementById("overlay");
-
   let original_loaded = false;
   let overlay_loaded = false;
 
