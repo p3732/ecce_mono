@@ -1,4 +1,5 @@
 const http = require('http');
+const ip = require("ip");
 const log  = require("./logging.js")("server", 6);
 
 /** Starts the server and binds it to the port. */
@@ -9,7 +10,9 @@ this.start = function(server_config, router) {
   var server = http.createServer(router);
 
   log("starting");
-  server.listen(port)
+  let address = ip.address();
+  server.listen(port, address);
+
   server.on("listening", function onListening() {
     var host = server.address().address
     host = (host == "::") ? "localhost" : host;

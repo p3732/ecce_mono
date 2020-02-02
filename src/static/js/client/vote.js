@@ -4,6 +4,8 @@ var imgDiv = document.getElementById("image");
 var like = document.getElementById("like");
 var next = document.getElementById("next");
 
+like.disabled = true;
+next.disabled = true;
 
 var index = 0;
 
@@ -55,7 +57,8 @@ function nextImage() {
          imgDiv.src = ""
          like.disabled = true;
          next.disabled = true;
+         window.location.replace("/html/client/wait.html");
     }
 }
 
-updateGallery()
+setTimeout(updateGallery(), 3000);

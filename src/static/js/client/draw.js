@@ -1,7 +1,6 @@
 
 //var painting = document.getElementById("painting");
 //var overlay = document.getElementById("overlay");
-
 var overlayImage = new Image;
 
 
@@ -9,6 +8,7 @@ var mouseIsDown = false;
 var prevMouseDownCoords = null;
 var canvas = document.getElementById("canvas");
 var submissionCanvas = document.getElementById("submissionCanvas");
+
 
 var context = canvas.getContext('2d');
 var submissionContext = submissionCanvas.getContext('2d');
@@ -48,6 +48,12 @@ function updateCurrentLevel() {
      seconds = ((levelTimeout - Date.now()) / 1000)
      seconds = Math.max(seconds, 0)
      timer.innerHTML = seconds.toFixed(1)
+
+     // redirect
+     if (seconds==0) {
+         //submitImage()
+         //window.location.replace("/html/client/vote.html");
+     }
  }
 
 function setCurrentLevel(level) {
