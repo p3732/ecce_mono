@@ -1,4 +1,3 @@
-@@ -1,148 +0,0 @@
 var imagesDiv = document.getElementById("images");
 
 var voteCounters = []
@@ -129,7 +128,7 @@ function voteTimer() {
 
     // redirect
     if (seconds==0) {
-        window.location.replace("/html/host/draw.html");
+        //window.location.replace("/html/host/draw.html");
     }
 }
 
@@ -141,7 +140,7 @@ function clearImages() {
     }
 }
 
-setTimeout(updateGallery(), 10000);
+setTimeout(updateGallery(), 3000);
 
 updateGallery()
 
