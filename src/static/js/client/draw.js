@@ -115,7 +115,7 @@ function setBrushButtons(brushNames) {
         var button = document.createElement("BUTTON");
         button.id = "brush_"+brushName;
         button.name = brushUrl;
-        button.class = "brushButton";
+        button.classList.add("brushButton");
         //onBrushButtonClick("brush_"+brushName);
         button.value = brushUrl
         button.innerHTML = '<img src="/img/brush/'+brushName+'.png" name="'+brushUrl+'"/>';
@@ -124,6 +124,8 @@ function setBrushButtons(brushNames) {
                                 console.log(e.target.name);
                             brush.src = e.target.name;};
         brushButtonsDiv.appendChild(button);
+        //x = document.getElementById(button.id);
+        //x.class = "asdasdasd"
 
     }
 }
