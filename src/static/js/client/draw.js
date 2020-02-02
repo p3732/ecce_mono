@@ -52,7 +52,7 @@ function updateCurrentLevel() {
          setTimeout(function() {
              submitImage();
              window.location.replace("/html/client/vote.html");
-         }, Math.random()*5000)
+         }, Math.random()*1000)
      }
  }
 
