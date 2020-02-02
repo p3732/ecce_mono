@@ -26,10 +26,13 @@ function updateCurrentLevel() {
 
      // redirect
      if (seconds==0) {
+         clearInterval(timer)
          window.location.replace("/html/host/gallery.html");
      }
  }
 
+
+var timer = null;
 
 function setCurrentLevel(level) {
     console.log("Setting level")
@@ -39,7 +42,7 @@ function setCurrentLevel(level) {
     picture.src = level.image
     console.log(level.image)
 
-    window.setInterval(levelTimer, 50);
+    timer = window.setInterval(levelTimer, 50);
 
     //canvas = overlayOnImage(level.image, level.overlay, level.x, level.y)
     //picture.src = canvas.toDataURL();
