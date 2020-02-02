@@ -63,6 +63,8 @@ function updateGallery() {
     request.send();
 
     voteTimeout = Date.now() + VOTE_SECONDS * 1000
+    window.setInterval(updateVotes, 300);
+    window.setInterval(voteTimer, 50);
 }
 
 
@@ -153,9 +155,4 @@ function clearImages() {
     }
 }
 
-setTimeout(updateGallery(), 10000);
-
-updateGallery()
-
-window.setInterval(updateVotes, 300);
-window.setInterval(voteTimer, 50);
+setTimeout(updateGallery(), 3000);
