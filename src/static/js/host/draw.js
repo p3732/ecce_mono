@@ -1,4 +1,4 @@
-var timer = document.getElementById("timer");
+var timerHTML = document.getElementById("timer");
 var levelTimeout = 0;
 var ipSpan = document.getElementById("ip");
 
@@ -22,7 +22,7 @@ function updateCurrentLevel() {
  function levelTimer() {
      seconds = ((levelTimeout - Date.now()) / 1000)
      seconds = Math.max(seconds, 0)
-     timer.innerHTML = seconds.toFixed(0)
+     timerHTML.innerHTML = seconds.toFixed(0)
 
      // redirect
      if (seconds==0) {
