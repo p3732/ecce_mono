@@ -44,10 +44,15 @@ function startGame(req, res) {
   log("starting new level (id " + id + ")");
 
   // set global state
+  log("starting new level in state " + global_state)
   global_state = "draw";
 
   // clear stored images
   global_stored_images = [];
+  global_votes = [];
+
+  log("images now are " + global_stored_images)
+  log("votes now are " + global_votes)
 
   Level.findOne({
     where: {"id": id}
