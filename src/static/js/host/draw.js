@@ -26,7 +26,7 @@ function updateCurrentLevel() {
 
      // redirect
      if (seconds==0) {
-         //window.location.replace("/html/client/vote.html");
+         window.location.replace("/html/client/vote.html");
      }
  }
 
