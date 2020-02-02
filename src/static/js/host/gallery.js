@@ -129,7 +129,7 @@ function voteTimer() {
 
     // redirect
     if (seconds==0) {
-        //window.location.replace("/html/host/draw.html");
+        window.location.replace("/html/host/draw.html");
     }
 }
 
@@ -141,7 +141,7 @@ function clearImages() {
     }
 }
 
-setTimeout(updateGallery(), 3000);
+setTimeout(updateGallery(), 10000);
 
 updateGallery()
 
