@@ -63,4 +63,4 @@ function nextImage() {
     }
 }
 
-setTimeout(updateGallery(), 10000*0 + Math.random()*3000);
+setTimeout(updateGallery, 10000 + Math.random()*3000);

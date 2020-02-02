@@ -127,8 +127,7 @@ function setImages(images) {
     //image.src = submissionCanvas.toDataURL("image/png");
 
 
-    window.setInterval(updateVotes, 300);
-    window.setInterval(voteTimer, 50);
+
 }
 
 
@@ -164,5 +163,9 @@ function clearImages() {
     }
 }
 
-setTimeout(updateGallery, 10000);
+//setTimeout(updateGallery, 10000);
 //setTimeout(updateGallery, 1000);
+window.setInterval(updateGallery, 2000)
+
+window.setInterval(updateVotes, 300);
+window.setInterval(voteTimer, 50);
