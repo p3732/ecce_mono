@@ -17,16 +17,15 @@ function updateCurrentLevel() {
 }
 
 
- window.setInterval(levelTimer, 50);
 
  function levelTimer() {
      seconds = ((levelTimeout - Date.now()) / 1000)
      seconds = Math.max(seconds, 0)
-     timer.innerHTML = seconds.toFixed(1)
+     timer.innerHTML = seconds.toFixed(0)
 
      // redirect
      if (seconds==0) {
-         window.location.replace("/html/client/vote.html");
+         window.location.replace("/html/host/gallery.html");
      }
  }
 
@@ -38,6 +37,8 @@ function setCurrentLevel(level) {
 
     levelTimeout = level.timeout
     picture.src = level.image
+
+    window.setInterval(levelTimer, 50);
 
     //canvas = overlayOnImage(level.image, level.overlay, level.x, level.y)
     //picture.src = canvas.toDataURL();

@@ -7,6 +7,14 @@ body {
     background-size: cover;
 }
 
+#drawButton {
+    z-index: 1;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+}
+
+
 #images {
 
 }
