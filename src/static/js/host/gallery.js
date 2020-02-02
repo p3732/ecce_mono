@@ -1,4 +1,3 @@
-@@ -1,148 +0,0 @@
 var imagesDiv = document.getElementById("images");
 
 var voteCounters = []
@@ -122,15 +121,28 @@ function setImages(images) {
 }
 
 
+function nextLevel() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.replace('/html/host/draw.html');
+        }
+        console.log(this.status)
+    };
+    request.open("POST", "/api/host/start", false);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send();
+}
+
 function voteTimer() {
     seconds = ((voteTimeout - Date.now()) / 1000)
     seconds = Math.max(seconds, 0)
     timer.innerHTML = seconds.toFixed(1)
 
     // redirect
-    if (seconds==0) {
-        window.location.replace("/html/host/draw.html");
-    }
+    //if (seconds==0) {
+    //    window.location.replace("/html/host/draw.html");
+    //}
 }
 
 
