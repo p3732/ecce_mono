@@ -20,7 +20,7 @@
     { where: { title: madame_roulin_and_her_baby
                image: /img/painting/madame_roulin_and_her_baby.jpg
                overlay: /img/overlay/madame_roulin_and_her_baby.png
-               x:61, y:1204, width: 2558, height: 2517
+               x:51, y:487, width: 1031, height: 1014
                brush_1: pen_E4CDB5
                brush_2: pen_E8E1CE
                brush_3: pen_447D0F
