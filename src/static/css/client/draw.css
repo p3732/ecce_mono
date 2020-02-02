@@ -27,6 +27,12 @@ body {
     height: 85%;
 }
 
+
+.brushButton {
+    min-height: 1cm;
+    min-width: 1cm;
+}
+
 #brushButtons {
     text-align: center;
     position: fixed;

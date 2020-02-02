@@ -37,7 +37,7 @@ function updateCurrentLevel() {
 }
 
 
- window.setInterval(levelTimer, 50);
+ timerIntervallCall = window.setInterval(levelTimer, 250);
 
  function levelTimer() {
      seconds = ((levelTimeout - Date.now()) / 1000)
@@ -45,13 +45,13 @@ function updateCurrentLevel() {
      timer.innerHTML = seconds.toFixed(1)
 
      if (seconds==0) {
-         //hideImage()
-
+         clearInterval(timerIntervallCall)
+         hideImage()
          // redirect
          // distribute load over time
          setTimeout(function() {
-             //submitImage();
-             //window.location.replace("/html/client/vote.html");
+             submitImage();
+             window.location.replace("/html/client/vote.html");
          }, Math.random()*5000)
      }
  }

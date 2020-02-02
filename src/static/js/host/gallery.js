@@ -31,16 +31,23 @@ function updateVotes() {
             votes = JSON.parse(this.responseText)
             for (i=0; i<votes.length; i++) {
                 v = votes[i]
-                voteCounters[i].innerHTML = v;
-                if (v>votes[argmax]) {
-                    argmax = i;
+                if (voteCounters.length > i) {
+                    voteCounters[i].innerHTML = v;
+                    if (v>votes[argmax]) {
+                        argmax = i;
+                    }
                 }
+
             }
             for (i=0; i<entries.length; i++) {
-                entries[i].classList.remove("pulse");
+                if (entries.length > i) {
+                    entries[i].classList.remove("pulse");
+                }
             }
             if (votes.length > 0) {
-                entries[argmax].classList.add('pulse');
+                if (entries.length > argmax) {
+                    entries[argmax].classList.add('pulse');
+                }
             }
         }
     };
@@ -52,6 +59,7 @@ function updateVotes() {
 
 
 function updateGallery() {
+    console.log("Updating Gallery")
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -63,8 +71,7 @@ function updateGallery() {
     request.send();
 
     voteTimeout = Date.now() + VOTE_SECONDS * 1000
-    window.setInterval(updateVotes, 300);
-    window.setInterval(voteTimer, 50);
+
 }
 
 
@@ -120,6 +127,8 @@ function setImages(images) {
     //image.src = submissionCanvas.toDataURL("image/png");
 
 
+    window.setInterval(updateVotes, 300);
+    window.setInterval(voteTimer, 50);
 }
 
 
@@ -155,4 +164,5 @@ function clearImages() {
     }
 }
 
-setTimeout(updateGallery(), 3000);
+setTimeout(updateGallery, 5000);
+//setTimeout(updateGallery, 1000);
