@@ -42,7 +42,7 @@ body {
     background: url(/img/misc/graffiti.png) no-repeat;
     background-size: contain;
 
-    height: 60%;
+    height: 50%;
     width: 80%;
 
     top: 50px;
@@ -54,7 +54,7 @@ body {
     font-size: 44px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    top: 70%;
+    top: 60%;
     left: 10%;
 }
 
