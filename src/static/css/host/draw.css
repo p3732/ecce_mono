@@ -20,6 +20,8 @@ body {
 #letter {
     position: absolute;
 
+    transform: rotate(-2deg);
+
     right: 180px;
     bottom: 0px;
     width: 600px;
@@ -27,6 +29,18 @@ body {
 
     background: url(/img/misc/letter.png) no-repeat;
     background-size: contain;
+}
+
+#ip {
+    position: absolute;
+    font-size: 32px;
+    color: darkblue;    
+    text-align: center;
+    font-family: sans-serif;
+    vertical-align: bottom;
+    
+    bottom: 50px;
+    left: 40px;
 }
 
 #timer {

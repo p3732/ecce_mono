@@ -32,6 +32,7 @@
                x:200, y:41, width: 398, height: 565
                brush_1: pen_E4CDB5
                brush_2: bristles_38325A
+               brush_3: pen_D7956E
     }}
   ]
 }
