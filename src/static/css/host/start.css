@@ -30,6 +30,12 @@ body {
     z-index: -1;
 }
 
+#text {
+    position: absolute;
+    height: 100%;
+    width: 60%;
+}
+
 #ecce_mono {
     position: absolute;
 
@@ -39,6 +45,27 @@ body {
     height: 60%;
     width: 80%;
 
-    top: 100px;
+    top: 50px;
     left: 50px;    
 }
+
+#link {
+    position: absolute;
+    font-size: 44px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    top: 70%;
+    left: 10%;
+}
+
+#start {
+    color: white;
+    background: black;
+    position: absolute;
+    font-size: 52px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    top: 85%;
+    left: 40%;
+}
+
