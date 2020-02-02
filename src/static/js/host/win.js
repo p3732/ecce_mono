@@ -3,6 +3,30 @@
 let original = new Image();
 let overlay = new Image();
 let level = {};
+let best_value = 0;
+
+function getBestVote() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            console.log("aeiae")
+            votes = JSON.parse(this.responseText)
+            max_value=0
+            best_value=0
+            for (i=0; i<votes.length; i++) {
+                v = votes[i]
+                if (v > max_value) {
+                  best_value = i;
+                }
+            }
+            loadBothImages();
+        }
+    };
+    request.open("GET", "/api/host/votes", false);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send();
+}
 
 function loadOriginal() {
   var request = new XMLHttpRequest();
@@ -21,7 +45,7 @@ function loadOverlay() {
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var gallery = JSON.parse(this.responseText)
-      var selected_image = gallery[0]
+      var selected_image = gallery[best_value]
       selected_image = decode(selected_image)
 
       overlay.src = selected_image
@@ -44,17 +68,18 @@ function decode(string) {
 
 
 async function overlayImages() {
+  console.log("aeitaofiaeiaesssssa")
   let canvas = document.createElement("CANVAS");
   canvas.height = original.naturalHeight
   canvas.width = original.naturalWidth
   let ctx = canvas.getContext("2d");
   ctx.drawImage(original,0,0);
   await ctx.drawImage(overlay,level.x,level.y,level.width, level.height);
-  ctx.canvas.height = 0.7 * window.innerHeight;
   document.body.append(canvas)
 }
 
 function loadBothImages() {
+  console.log("aeitaofa")
   let original_loaded = false;
   let overlay_loaded = false;
 
@@ -76,5 +101,17 @@ function loadBothImages() {
   loadOverlay();
 }
 
-loadBothImages();
+getBestVote();
 
+function nextLevel() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.replace('/html/host/draw.html');
+        }
+        console.log(this.status)
+    };
+    request.open("POST", "/api/host/start", false);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send();
+}

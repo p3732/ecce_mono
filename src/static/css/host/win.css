@@ -1,0 +1,24 @@
+body {
+    margin: 0px;
+    width:100vw;
+    height:100vh;
+    /* background-color: #d0c5af; */
+    background: white url(/img/misc/white_wall.jpg) no-repeat fixed top;
+    background-size: cover;
+}
+
+#drawButton {
+    z-index: 1;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+}
+
+
+canvas {
+    height: 80%;
+    left: 25%;
+    position: fixed;
+    top:10%;
+}
+
