@@ -1,0 +1,12 @@
+body {
+    margin: 0px;
+    width:100vw;
+    height:100vh;
+    /* background-color: #d0c5af; */
+    background: white url(/img/intro/frame1.png) no-repeat top;
+    background-size: contain
+ }
+
+.fullscreen {
+    height: 100%;
+}
