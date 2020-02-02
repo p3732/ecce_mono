@@ -4,7 +4,10 @@
 	 id="svg1468" inkscape:export-filename="pen_000000.png" inkscape:export-xdpi="48" inkscape:export-ydpi="48" inkscape:version="0.92.4 5da689c313, 2019-01-14" sodipodi:docname="pen_000000.svg" sodipodi:version="0.32" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64"
 	 style="enable-background:new 0 0 64 64;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#E8E1CE;}
+</style>
 <sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" id="base" inkscape:current-layer="svg1468" inkscape:cx="-28.021015" inkscape:cy="25.860878" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:snap-global="false" inkscape:window-height="1016" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="27" inkscape:zoom="7.3670843" pagecolor="#ffffff" showgrid="false">
 	</sodipodi:namedview>
-<circle id="path822" cx="32" cy="32" r="16"/>
+<circle id="path822" class="st0" cx="32" cy="32" r="16"/>
 </svg>
